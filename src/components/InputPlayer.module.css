@@ -1,0 +1,21 @@
+input[type="text"]:focus {
+  background-color: rgb(231, 231, 231);
+}
+
+input[type="text"] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  margin-left: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.btn{
+    margin: 2rem;
+    font-size: 1.5rem;
+}
+
+.fontSize{
+    font-size: 1.5rem;
+}

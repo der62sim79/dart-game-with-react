@@ -1,5 +1,9 @@
-.sizeDisc{
-    background-color: blue;
-    width: 500px;
-    height: 500px;
+.sizeDisc {
+  width: 500px;
+  height: 500px;
+}
+
+.position {
+  display: flex;
+  justify-content: center;
 }

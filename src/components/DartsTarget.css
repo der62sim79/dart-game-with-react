@@ -1,77 +1,77 @@
 .App-header .target:hover {
-    fill: #5757de;
+  fill: #5757de;
 }
 
 .target.checked {
-    fill: blue;
+  fill: blue;
 }
 
 .st0 {
-    fill: none;
-    stroke: #FFFFFF;
-    stroke-width: 0.25;
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 0.25;
 }
 
 .st1 {
-    fill: #FAFAAC;
+  fill: #fafaac;
 }
 
 .st2 {
-    fill: #FFE680;
+  fill: #ffe680;
 }
 
 .st3 {
-    fill: #FFE680;
-    stroke: #FFFFFF;
-    stroke-width: 0.25;
+  fill: #ffe680;
+  stroke: #ffffff;
+  stroke-width: 0.25;
 }
 
 .st4 {
-    fill: #D40000;
+  fill: #d40000;
 }
 
 .st5 {
-    fill: none;
-    stroke: #78FF21;
-    stroke-width: 0.25;
+  fill: none;
+  stroke: #78ff21;
+  stroke-width: 0.25;
 }
 
 .st6 {
-    fill: #FF212C;
+  fill: #ff212c;
 }
 
 .st7 {
-    fill: #D40000;
-    stroke: #FFFFFF;
-    stroke-width: 0.25;
+  fill: #d40000;
+  stroke: #ffffff;
+  stroke-width: 0.25;
 }
 
 .st8 {
-    fill: #33F105;
+  fill: #33f105;
 }
 
 .st9 {
-    fill: #00AA00;
-    stroke: #FFFFFF;
-    stroke-width: 0.25;
+  fill: #00aa00;
+  stroke: #ffffff;
+  stroke-width: 0.25;
 }
 
 .st10 {
-    fill: #FFFFFF;
+  fill: #ffffff;
 }
 
 .st11 {
-    font-family: 'NirmalaUI-Bold';
+  font-family: "NirmalaUI-Bold";
 }
 
 .st12 {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 .st13 {
-    fill: none;
+  fill: none;
 }
 
 .st14 {
-    fill: #FCFCFC;
+  fill: #fcfcfc;
 }

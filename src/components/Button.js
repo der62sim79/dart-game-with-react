@@ -9,6 +9,7 @@ class Button extends Component {
       shotvalue: 0,
       targets: [],
       selectedTargetIndices: [],
+      shootCounter: 2,
     };
   }
 
@@ -25,9 +26,9 @@ class Button extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.handleClick.bind(this)}>Zufall Generator</button>
-        <button>Hit Target</button>
-        <button>Fail Target</button>
+        <button onClick={this.handleClick.bind(this)}>Zufalls Generator</button>
+        <button onClick={this.handleHit}>Ziel getroffen</button>
+        <button onClick={this.handleFail}>Ziel verfehlt</button>
       </div>
     );
   }
@@ -38,21 +39,42 @@ class Button extends Component {
     while (found) {
       var randomNumber = Math.floor(Math.random() * this.state.targets.length);
       if (!this.state.selectedTargetIndices.includes(randomNumber)) {
-    
-        found=false;
+        found = false;
       }
     }
     let foundValues = this.state.selectedTargetIndices;
     foundValues.push(randomNumber);
-   
+
     var randField = this.state.targets[randomNumber];
     randField.classList.add("checked");
-  
+
     this.setState({
-      selectedTargetIndices:foundValues,
-      value: randField.attributes.shotvalu
-    })
+      selectedTargetIndices: foundValues,
+      value: randField.attributes.shotvalu,
+    });
   }
+
+  handleFail = () => {
+    var shootCounter = this.state.shootCounter;
+    this.setState(({ shootCounter }) => ({
+      shootCounter: shootCounter - 1,
+    }));
+    alert(shootCounter);
+  };
+
+  handleHit = () => {
+    var shootCounter = this.state.shootCounter;
+    this.setState(({ shootCounter }) => ({
+      shootCounter: shootCounter - 1,
+    }));
+    alert(shootCounter);
+  };
+
+  nextPlayer = () =>{
+    let points = 0;
+    this.state.targets.forEach(item => points += parseFloat(item.attributes.shotvalue.value));
+  }
+
 }
 
 export default Button;
