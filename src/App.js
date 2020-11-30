@@ -3,6 +3,7 @@ import { Component } from "react";
 import Header from "./components/Header";
 import DartDisc from "./components/DartDisc";
 import Button from "./components/Button";
+import Player from "./components/Player";
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +33,7 @@ class App extends Component {
         <Header />
         <DartDisc />
         <Button />
+        <Player />
       </div>
     );
   }
