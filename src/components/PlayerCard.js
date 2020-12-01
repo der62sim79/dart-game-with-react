@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import mon from "./image/mon.jpg";
 import styles from "./PlayerCard.module.css";
-import name from "./InputPlayer.js";
 
 class PlayerCard extends Component {
   

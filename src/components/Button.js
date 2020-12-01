@@ -10,6 +10,7 @@ class Button extends Component {
       targets: [],
       selectedTargetIndices: [],
       shootCounter: 2,
+      roundScore: 0
     };
   }
 
@@ -50,7 +51,7 @@ class Button extends Component {
 
     this.setState({
       selectedTargetIndices: foundValues,
-      value: randField.attributes.shotvalu,
+      shotvalue: randField.attributes.shotvalue,
     });
   }
 
@@ -64,17 +65,24 @@ class Button extends Component {
 
   handleHit = () => {
     var shootCounter = this.state.shootCounter;
-    this.setState(({ shootCounter }) => ({
+    var shotvalue = this.state.shotvalue;
+    var roundScore = this.state.roundScore;
+
+    this.setState(({ shootCounter }, {shotvalue}, {roundScore}) => ({
       shootCounter: shootCounter - 1,
+      shotvalue: shotvalue,
+      roundScore: shotvalue,
     }));
-    alert(shootCounter);
+    alert(shootCounter + shotvalue);
+
   };
 
-  nextPlayer = () =>{
+  nextPlayer = () => {
     let points = 0;
-    this.state.targets.forEach(item => points += parseFloat(item.attributes.shotvalue.value));
-  }
-
+    this.state.targets.forEach(
+      (item) => (points += parseFloat(item.attributes.shotvalue.value))
+    );
+  };
 }
 
 export default Button;
