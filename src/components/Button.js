@@ -34,6 +34,7 @@ class Button extends Component {
     );
   }
 
+
   handleClick() {
     let found = true;
 
@@ -67,22 +68,31 @@ class Button extends Component {
     var shootCounter = this.state.shootCounter;
     var shotvalue = this.state.shotvalue;
     var roundScore = this.state.roundScore;
-
-    this.setState(({ shootCounter }, {shotvalue}, {roundScore}) => ({
+    
+    this.setState(({ shootCounter }, { shotvalue }, {roundScore}) => ({
       shootCounter: shootCounter - 1,
       shotvalue: shotvalue,
-      roundScore: shotvalue,
+      roundScore: roundScore + shotvalue
     }));
     alert(shootCounter + shotvalue);
-
   };
 
   nextPlayer = () => {
-    let points = 0;
-    this.state.targets.forEach(
-      (item) => (points += parseFloat(item.attributes.shotvalue.value))
-    );
+    var shootCounter = this.state.shootCounter;
+    while (!shootCounter === 0) {
+      let points = 0;
+      this.state.roundScore.forEach(
+        (item) => (points += parseInt(item.attributes.shotvalue.value))
+      );
+
+      var roundScore = this.state.roundScore;
+      this.setState({
+        roundScore: roundScore + points
+      });
+    }
   };
+
+
 }
 
 export default Button;
