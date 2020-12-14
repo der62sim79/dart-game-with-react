@@ -1,17 +1,27 @@
 import React, { Component } from "react";
 
-class Button extends Component {
+export default class PlayRound extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
 
     this.state = {
-      shotvalue: 0,
       targets: [],
       selectedTargetIndices: [],
       shootCounter: 2,
-      roundScore: 0
+      roundScore: 0,
+      playerNumber: 0
     };
+  }
+
+  componentDidUpdate(prev, act){
+    if (prev.round!=this.props.round){
+      this.selectRandomField();
+      this.setState({
+        shootCounter:2,
+        roundScore:0
+      })
+    }
+    
   }
 
   componentDidMount() {
@@ -21,21 +31,24 @@ class Button extends Component {
       that.setState({
         targets: targets,
       });
+     
     });
+   
   }
 
   render() {
     return (
       <div>
-        <button onClick={this.handleClick.bind(this)}>Zufalls Generator</button>
+       
         <button onClick={this.handleHit}>Ziel getroffen</button>
         <button onClick={this.handleFail}>Ziel verfehlt</button>
+        <h1>{this.state.roundScore}</h1>
       </div>
     );
   }
 
 
-  handleClick() {
+  selectRandomField = ()=> {
     let found = true;
 
     while (found) {
@@ -48,7 +61,12 @@ class Button extends Component {
     foundValues.push(randomNumber);
 
     var randField = this.state.targets[randomNumber];
-    randField.classList.add("checked");
+    if (this.props.playerNumber===0){
+      randField.classList.add("checked");
+    } else {
+      randField.classList.add("checked2");
+    }
+    
 
     this.setState({
       selectedTargetIndices: foundValues,
@@ -58,41 +76,37 @@ class Button extends Component {
 
   handleFail = () => {
     var shootCounter = this.state.shootCounter;
-    this.setState(({ shootCounter }) => ({
+    this.setState({
       shootCounter: shootCounter - 1,
-    }));
-    alert(shootCounter);
-  };
+    });
+    this.isPlayerFinished(shootCounter);
+    this.selectRandomField();
+   
+  }
 
   handleHit = () => {
     var shootCounter = this.state.shootCounter;
-    var shotvalue = this.state.shotvalue;
-    var roundScore = this.state.roundScore;
+    var shotvalue = parseInt(this.state.shotvalue.value);
+    var roundScore = this.state.roundScore + shotvalue;
     
-    this.setState(({ shootCounter }, { shotvalue }, {roundScore}) => ({
+    this.setState({
       shootCounter: shootCounter - 1,
-      shotvalue: shotvalue,
-      roundScore: roundScore + shotvalue
-    }));
-    alert(shootCounter + shotvalue);
-  };
+      roundScore: roundScore
+    });
+    this.isPlayerFinished(shootCounter);
+    this.selectRandomField();
+    
+  }
 
-  nextPlayer = () => {
-    var shootCounter = this.state.shootCounter;
-    while (!shootCounter === 0) {
-      let points = 0;
-      this.state.roundScore.forEach(
-        (item) => (points += parseInt(item.attributes.shotvalue.value))
-      );
-
-      var roundScore = this.state.roundScore;
-      this.setState({
-        roundScore: roundScore + points
-      });
+  isPlayerFinished = (counter) =>{
+    if (counter===0){
+      this.props.changePlayer(this.state.roundScore);
     }
-  };
+  }
+
+  
 
 
 }
 
-export default Button;
+
