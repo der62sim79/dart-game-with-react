@@ -6,6 +6,10 @@
   fill: blue;
 }
 
+.target.checked2{
+  fill:orange;
+}
+
 .st0 {
   fill: none;
   stroke: #ffffff;
