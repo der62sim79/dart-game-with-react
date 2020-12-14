@@ -19,3 +19,4 @@ class PlayerCard extends Component {
 }
 
 export default PlayerCard;
+
