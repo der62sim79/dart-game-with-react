@@ -12,7 +12,7 @@ class App extends Component {
     super(props);
     this.state = {
       value: 0,
-      players: [{ "name": "hans", "score": 0 }, { "name": "sepp", "score": 0 }],
+      players: [{ "name": "Willi", "score": 0 }],
       actualPlayer: 0,
       playedRounds: -1,
       isStarted: false,
@@ -47,7 +47,7 @@ class App extends Component {
   gameLoop = () => {
     if (!this.state.isStarted) {
       // reset scrore of players
-      let message = "Spieler " + this.state.players[0].name + " ist an der Reihe";
+      let message = this.state.players[0].name + " ist an der Reihe";
       this.setState({
         actualPlayer: 0,
         message: message,
@@ -59,7 +59,7 @@ class App extends Component {
 
       let actualPlayer = (this.state.actualPlayer + 1) % this.state.players.length;
       let playedRounds = this.state.playedRounds + 1;
-      let message = "Spieler " + this.state.players[actualPlayer].name + " ist an der Reihe";
+      let message = this.state.players[actualPlayer].name + " ist an der Reihe";
       this.setState({
         actualPlayer: actualPlayer,
         message: message,
