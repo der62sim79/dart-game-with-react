@@ -17,21 +17,22 @@ class InputPlayer extends Component {
   }
 
   handleSubmit(event) {
-    alert("Spieler Name " + this.state.value);
     event.preventDefault();
     this.props.playerAdded(this.state.value);
+    this.setState({ value: "" }); // Clear the input after submission
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label className={styles.fontSize}>
+      <form className={styles.form} onSubmit={this.handleSubmit}>
+        <label className={styles.label}>
           Spieler Name:
           <input
             className={styles.input}
             type="text"
             value={this.state.value}
             onChange={this.handleChange}
+            placeholder="Enter player name"
           />
         </label>
         <button type="submit" value="Submit" className={styles.btn}>
