@@ -9,12 +9,11 @@ export default class PlayRound extends Component {
       selectedTargetIndices: [],
       shootCounter: 2,
       roundScore: 0,
-      playerNumber: 0,
     };
   }
 
-  componentDidUpdate(prev, act) {
-    if (prev.round != this.props.round) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.round !== this.props.round) {
       this.selectRandomField();
       this.setState({
         shootCounter: 2,
@@ -24,13 +23,8 @@ export default class PlayRound extends Component {
   }
 
   componentDidMount() {
-    let that = this;
-    window.addEventListener("load", function () {
-      const targets = document.querySelectorAll(".target");
-      that.setState({
-        targets: targets,
-      });
-    });
+    const targets = document.querySelectorAll(".target");
+    this.setState({ targets });
   }
 
   render() {
@@ -74,14 +68,13 @@ export default class PlayRound extends Component {
       shootCounter: shootCounter - 1,
     });
     this.isPlayerFinished(shootCounter);
-    //this.selectRandomField();
   };
 
   handleHit = () => {
     var shootCounter = this.state.shootCounter;
     var shotvalue = parseInt(this.state.shotvalue.value);
     var roundScore = this.state.roundScore + shotvalue;
-    if (shootCounter != 0) {
+    if (shootCounter !== 0) {
       this.setState({
         shootCounter: shootCounter - 1,
         roundScore: roundScore,
